@@ -1,13 +1,20 @@
-### Termos e acordos
+# Boas vindas ao repositório do projeto TING (Trybe is not Google)!
 
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do
-Manual da Pessoa Estudante da Trybe.
+Projeto desenvolvido como requisito parcial para conclusão do módulo de Ciência da Computação do curso de Desenvolvimento Web da Trybe. Este projeto, desenvolvido em **Python**, tem como objetivo implementar uma aplicação que simule um algoritmo de indexação de documentos, algo similar ao do Google. Ou seja, um programa que permita anexar arquivos de texto e posteriormente opere funções de busca sobre tais arquivos.
 
-# Boas vindas ao repositório do projeto TING(Trybe is not Google)!
+> Com a quantidade de informações disponíveis na Web, encontrar o que você precisa seria quase impossível sem nenhuma ajuda para classificá-las. Os sistemas de classificação do Google organizam centenas de bilhões de páginas da Web, no índice da pesquisa, para fornecer os resultados mais úteis e relevantes em uma fração de segundo. Além disso tudo, a Google também precisa se preocupar em apresentar os resultados de uma maneira que ajude você a encontrar o que está procurando com mais facilidade ainda.
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+#### Analisar palavras
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+> Compreender o significado da sua pesquisa é crucial para retornarmos boas respostas. Por isso, para encontrar páginas com informações relevantes, o primeiro passo do projeto é analisar o significado das palavras na consulta de pesquisa. Desenvolvemos modelos linguísticos para decifrar as sequências de palavras que precisamos procurar no índice.
+
+Cabe destacar que, neste projeto, não me apeguei à análise de significados ou busca por sinônimos. O objetivo foi tão só identificar ocorrências de termos em arquivos _TXT_. Neste contexto, buscou-se implementar uma aplicação que permite anexar arquivos de texto e posteriormente operar funções de busca sobre tais arquivos.
+
+Sendo assim, esta aplicação possui dois módulos:
+
+- gerenciamento de arquivos
+
+- buscas
 
 ---
 
@@ -15,18 +22,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 # Sumário
 
 - [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
-  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
-  - [Desenvolvimento](#desenvolvimento)
-  - [Data de Entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-- [Como desenvolver](#como-desenvolver)
-  - [Desenvolvimento e testes](#desenvolvimento-e-testes)
-- [Requisitos do projeto](#requisitos-do-projeto)
-
-    `Requisitos obrigatórios:`
+- [Desenvolvimento](#desenvolvimento)
+- [Data de Entrega](#data-de-entrega)
+`Requisitos obrigatórios:`
     - [1 - Implemente uma fila para armazenar os arquivos que serão lidos](#1---implemente-uma-fila-para-armazenar-os-arquivos-que-serão-lidos)
     - [2 - Implemente uma função `txt_importer` dentro do módulo `file_management` capaz de importar notícias a partir de um arquivo TXT, utilizando "\n" como separador. Todas as mensagens de erro devem ir para a `stderr`](#2---implemente-uma-função-txt_importer-dentro-do-módulo-file_management-capaz-de-importar-notícias-a-partir-de-um-arquivo-txt-utilizando-n-como-separador-todas-as-mensagens-de-erro-devem-ir-para-a-stderr)
     - [3 - Implemente uma função `process` dentro do módulo `file_process` capaz de ler o arquivo carregado na função anterior e efetuar o preprocessamento do conteúdo](#3---implemente-uma-função-process-dentro-do-módulo-file_process-capaz-de-ler-o-arquivo-carregado-na-função-anterior-e-efetuar-o-preprocessamento-do-conteúdo)
@@ -35,9 +33,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [6 - Implemente uma função `exists_word` dentro do módulo `word_search`, que valide a existência da palavra em todos os arquivos processados. Para cada palavra encontrada, deve-se listar sua linha conforme apresentação abaixo](#6---implemente-uma-função-exists_word-dentro-do-módulo-word_search-que-valide-a-existência-da-palavra-em-todos-os-arquivos-processados-para-cada-palavra-encontrada-deve-se-listar-sua-linha-conforme-apresentação-abaixo)
     - [7 - Implemente uma função `search_by_word` dentro do módulo `word_search`, que busque a palavra em todos os arquivos processados. Para cada palavra encontrada, deve-se listar sua linha, o conteúdo e o arquivo da ocorrência](#7---implemente-uma-função-search_by_word-dentro-do-módulo-word_search-que-busque-a-palavra-em-todos-os-arquivos-processados-para-cada-palavra-encontrada-deve-se-listar-sua-linha-o-conteúdo-e-o-arquivo-da-ocorrência)
 
-- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
-- [Revisando um pull request](#revisando-um-pull-request)
-- [Avisos Finais](#avisos-finais)
 
 ---
 
@@ -53,37 +48,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 --- 
 
-## Entregáveis
-
-Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter os arquivos apresentados na sessão: [Desenvolvimento e testes](#desenvolvimento-e-testes).
-
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/fundamentals/git) sempre que precisar!
-
----
-
-## O que deverá ser desenvolvido
-
-A `Trybe` lhe convida para implementar um programa que simule o algoritmo de indexação de documentos similar ao do Google. Ou seja, um programa que permita anexar arquivos de texto e posteriormente opere funções de busca sobre tais arquivos
-
-> Com a quantidade de informações disponíveis na Web, encontrar o que você precisa seria quase impossível sem nenhuma ajuda para classificá-las. Os sistemas de classificação do Google organizam centenas de bilhões de páginas da Web, no índice da pesquisa, para fornecer os resultados mais úteis e relevantes em uma fração de segundo. Além disso tudo, a Google também precisa se preocupar em apresentar os resultados de uma maneira que ajude você a encontrar o que está procurando com mais facilidade ainda.
-
-#### Analisar palavras
-
-> Compreender o significado da sua pesquisa é crucial para retornarmos boas respostas. Por isso, para encontrar páginas com informações relevantes, nosso primeiro passo é analisar o significado das palavras na consulta de pesquisa. Desenvolvemos modelos linguísticos para decifrar as sequências de palavras que precisamos procurar no índice.
-
-Não iremos nos apegar a análise de significados ou busca por sinônimos. Nosso objetivo será identificar ocorrências de termos em arquivos _TXT_. Neste contexto, devemos criar um programa que permita anexar arquivos de texto e posteriormente operar funções de busca sobre tais arquivos.
-
-Sendo assim o programa deverá possuir dois módulos:
-
-- Modo gerenciamento de arquivos;
-
-- Modo de buscas.
-
----
-
 ## Desenvolvimento
 
-Este repositório já contém um _template_ com a estrutura de diretórios e arquivos, tanto de código quanto de teste criados. Há também o diretório `statics` que contém os arquivos necessários para realização de testes, caso julgue necessário, sinta-se à vontade para criar novos arquivos ou editar o conteúdo dos arquivos existentes. Veja abaixo:
+Este repositório já contém um _template_ com a estrutura de diretórios e arquivos, tanto de código quanto de teste criados. Veja abaixo:
 
 ```md
 .
@@ -102,9 +69,9 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 └── setup.cfg
 ```
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes (_extra_). Novos arquivos podem ser criados conforme a necessidade.
+Apesar do projeto já possuir uma estrutura base, eu implementei as funções, conforme os requisitos técnicos descritos a seguir. 
 
-Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
+A criação do ambiente virtual e instalação das dependências do projeto é feita ao rodar os scripts abaixo na raiz do projeto:
 
 ```bash
 $ python3 -m venv .venv
@@ -114,89 +81,14 @@ $ source .venv/bin/activate
 $ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. 
+O arquivo `requirements.txt` contém todos as dependências que são utilizadas no projeto. 
 
 ---
 
 ## Data de Entrega
 
-  - Serão `2` dias de projeto.
+  - Foram `2` dias de projeto.
   - Data de entrega para avaliação final do projeto: `11/02/2022 - 14:00h`.
-
----
-
-## Instruções para entregar seu projeto:
-
-### ANTES DE COMEÇAR A DESENVOLVER:
-
-1. Clone o repositório
-
-- `git clone git@github.com:tryber/sd-010-a-project-ting.git`.
-- Entre na pasta do repositório que você acabou de clonar:
-  - `sd-010-a-project-ting`
-
-2. Crie o ambiente virtual para o projeto
-
-- `python3 -m venv .venv && source .venv/bin/activate`
-
-3. Instale as dependências
-
-- `python3 -m pip install -r dev-requirements.txt`
-
-4. Crie uma branch a partir da branch `main`
-
-- Verifique que você está na branch `main`
-  - Exemplo: `git branch`
-- Se não estiver, mude para a branch `main`
-  - Exemplo: `git checkout main`
-- Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-  - Você deve criar uma branch no seguinte formato: `nome-github-nome-do-projeto`
-  - Exemplo: `git checkout -b exemplo-project-ting`
-
-5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-
-- Verifique que as mudanças ainda não estão no _stage_
-  - Exemplo: `git status` (deve aparecer listada a pasta _exemplo_ em vermelho)
-- Adicione o novo arquivo ao _stage_ do Git
-  - Exemplo:
-    - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-    - `git status` (deve aparecer listado o arquivo _exemplo/README.md_ em verde)
-- Faça o `commit` inicial
-  - Exemplo:
-    - `git commit -m 'iniciando o projeto ting'` (fazendo o primeiro commit)
-    - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-6. Adicione a sua branch com o novo `commit` ao repositório remoto
-
-- Usando o exemplo anterior: `git push -u origin exemplo-project-name`
-
-7. Crie um novo `Pull Request` _(PR)_
-
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-010-a-project-ting/pulls)
-- Clique no botão verde _"New pull request"_
-- Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-- Clique no botão verde _"Create pull request"_
-- Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-- **Não se preocupe em preencher mais nada por enquanto!**
-- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-010-a-project-ting/pulls) e confira que o seu _Pull Request_ está criado
-
----
-
-## Testes
-
-Com as dependências já instaladas, para executar os testes basta usar o comando:
-
-```bash
-$ python3 -m pytest
-```
-
-Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse artigo: https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
-
-Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
-
-```bash
-$ python3 -m flake8
-```
 
 ---
 
