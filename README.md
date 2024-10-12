@@ -24,6 +24,7 @@ Sendo assim, esta aplicação possui dois módulos:
 - [Habilidades](#habilidades)
 - [Desenvolvimento](#desenvolvimento)
 - [Data de Entrega](#data-de-entrega)
+  
 `Requisitos obrigatórios:`
     - [1 - Implemente uma fila para armazenar os arquivos que serão lidos](#1---implemente-uma-fila-para-armazenar-os-arquivos-que-serão-lidos)
     - [2 - Implemente uma função `txt_importer` dentro do módulo `file_management` capaz de importar notícias a partir de um arquivo TXT, utilizando "\n" como separador. Todas as mensagens de erro devem ir para a `stderr`](#2---implemente-uma-função-txt_importer-dentro-do-módulo-file_management-capaz-de-importar-notícias-a-partir-de-um-arquivo-txt-utilizando-n-como-separador-todas-as-mensagens-de-erro-devem-ir-para-a-stderr)
